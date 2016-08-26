@@ -2,9 +2,8 @@ language: go
 go: 1.7
 sudo: false
 
-script: make test
+script: make releases
 
-before_deploy: make release
 deploy:
   provider: releases
   edge:
