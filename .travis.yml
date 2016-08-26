@@ -2,7 +2,7 @@ language: go
 go: 1.7
 sudo: false
 
-script: make releases
+script: make release
 
 deploy:
   provider: releases
