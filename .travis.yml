@@ -1,19 +1,13 @@
 language: go
-go: 1.7
+go: 1.8
 sudo: false
 
-script: make release
+script: go test
 
 deploy:
   provider: releases
-  edge:
-    source: jawher/dpl
-    branch: named-releases-files
   api_key:
     secure: "ik/ipgLWGzxsnLAus9ksXvOnnlw0FF9NIx8ZqJubrfS813xQMkpj8zo8NkhhixQqSam/qlTi3M80BzoM/hkGahTaONASJJzyCxYwnXiw6DOusqHXdhwgEUnDxYD+Qq0/CYStHQFFl+i4O++ZAfxyIseJsbT54BdtTNN/Fwc0+GZqyqJ6+KFhsiXqyY5AZ29FXErUVqruBdTEvkbNi4eAXc1X+rm7Rpz0EYpiRuXpTxE1PnS2EMU5TKJPNDyBNg3Zq8C3o+TWttW+p6ySOEZRPgJ3ZBzmuEu6fvMxHW0agIiccqiKOyrQdApiJ6tZUn7tUsY02q2l1LIesEYT397/nSEcKo6Dms9mXEkXlzgNUCRJMUsds77e67BcOabj9X1dnGu+urtUhGTNDGUX+oC4Bmlm12P+RWnoSLKjNVTFFXMAQ5OOh4ZDS/s6ttD79Y8M4BFrkNMWjw4Ise6BiYD8Q6M3rY7c0iiu0R9XRBtkwf1guRSfl3mJ66NkOUYPNU4TBK2RUHU+9PxbXfBFUBfsqotCODBnbfPWOQGY7i4JYMqqbrtpBdhqpjzGvkmmCkKQXXwhXqajBfZ/93YMx8bDwEhcUTJxm5ByUoJIbwJgk7TLb0yYROlRYVsiA1bmwOBFzupFN8/S5EjxkVcKhZ34HaX311R0R71/YK6CFKKDQHA="
-  file:
-  - bin/linux/test
-  - bin/darwin/test
   skip_cleanup: true
   on:
-    all_branches: true
+    tags: true
