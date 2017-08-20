@@ -10,8 +10,8 @@ script: go test
 
 before_deploy:
 - mkdir -p bin
-- GOOS=linux GOARCH=amd64 go build -o bin/parsopt_linux_amd64 -ldflags="-X version=$TRAVIS_TAG"
-- GOOS=darwn GOARCH=amd64 go build -o bin/parsopt_darwin_amd64 -ldflags="-X version=$TRAVIS_TAG"
+- GOOS=linux GOARCH=amd64 go build -o bin/parsopt_linux_amd64 -ldflags="-X main.version=$TRAVIS_TAG"
+- GOOS=darwn GOARCH=amd64 go build -o bin/parsopt_darwin_amd64 -ldflags="-X main.version=$TRAVIS_TAG"
 
 deploy:
   provider: releases
