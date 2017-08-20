@@ -1,8 +1,17 @@
-package dpl
+package main
 
-import "github.com/jawher/mow.cli"
+import (
+	"os"
 
-func Test() int {
-	return 3
+	"github.com/jawher/mow.cli"
+)
+
+var (
+	version string
+)
+
+func main() {
 	app := cli.App("app", "Description")
+	app.Version("v", version)
+	app.Run(os.Args)
 }

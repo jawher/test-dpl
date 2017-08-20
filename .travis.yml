@@ -8,10 +8,17 @@ install:
 
 script: go test
 
+before_deploy:
+- mkdir -p bin
+- GOOS=linux GOARCH=amd64 go build -o bin/parsopt_linux_amd64 -ldflags="-X version=$TRAVIS_TAG"
+- GOOS=darwn GOARCH=amd64 go build -o bin/parsopt_darwin_amd64 -ldflags="-X version=$TRAVIS_TAG"
+
 deploy:
   provider: releases
   api_key:
     secure: pBrObRDHXbXo3DmMl3MSjdyufxOz7QzTS982lihUT3aN6CCQxl2qmLVhVsFnFOyPLqMwXyrMONz87qcIdjTGvYzHVHdwQGPBwv2YI0eOXl91dh/bjhNJ05fOfYI5AfTfdap472JTQs4T4/x8xT2VZkXvjvuF2ddkWvOapILyMsyYSRur22JA900CyjZa3vfFuwzNOsqdVk/gET8W+wpLOGMvvtPcbR/IiOeob+4LeJHYBa5HUX9m4ir+BxI7zZ51DjRdS3Uj/JYAinvoBhBx9py+vyjE2yfzddRoATCpyV9NO7VLSaFIq46/PJZ63a9hQU56r6B9XMEhqTDOP29TemlV1vm+VivVvqRL0kGbHDM270x4pl3RCG5xxKkdIkrXcPWoZ1uUsxrgSu3gFs/fRq8JnhqOJPwply9DGL02pVAOevhTzsvrqg5il2y6HSjgC6Ynd9zEamRgQa0kKcYyMoLJExVx5Jb4dVBilYMHrKxJAwbWD9fg6e8dV4q6EdlaxRVK51DIoalF+QE/R/Z+NTgNFkq6cyYad7xsfRrqAJGB1v98NJ42Wienl6zeIc6wsZvQPsVt0OzTxk1puvyNWATJl03YFuIXEf/8/maFsZN8tkik5A3YaAPaZBMTU1Rc/Bxhe7+XKhShrvaK5KlLVKuSBdQFmNvJBbwMuQRkej4=
+  file_glob: true
+  file: bin/*
   skip_cleanup: true
   on:
     tags: true
