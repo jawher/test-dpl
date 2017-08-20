@@ -1,0 +1,6 @@
+hash: a59b64da5e97fe33c831f8940986058c897ea0dc21aae5e6e0e8c15909e5c513
+updated: 2017-08-20T18:09:46.120486764+02:00
+imports:
+- name: github.com/jawher/mow.cli
+  version: fb4935cbbd01be1341534177ee28a803a4ab6a81
+testImports: []
